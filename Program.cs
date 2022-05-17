@@ -38,8 +38,6 @@ public static class Program {
 
         foreach(Func<int, int, IGuessingStrategy> stratFactory in STRATEGIES)
         {
-            List<int> result = new List<int>();
-
             results[stratFactory(0, 0).Name] = 
                 Enumerable
                     .Range(1, TOTAL_RUNS)

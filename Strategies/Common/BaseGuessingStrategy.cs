@@ -5,6 +5,9 @@ namespace OneHundredSolver.Strategies.Common;
 /// <summary>
 /// An abstract class for building an <see cref="IGuessingStrategy"/> for a <see cref="Person"/> to use when guessing.
 /// </summary>
+/// <remarks>
+/// This abstract class mainly collect data for strategies, and provides protected methods for strategies to use to pull data for their logic.
+/// </remarks>
 public abstract class BaseGuessingStrategy: IGuessingStrategy {
     private readonly int _max;
     private readonly int _index;
