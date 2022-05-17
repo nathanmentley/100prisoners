@@ -8,7 +8,7 @@ namespace OneHundredSolver.Strategies;
 /// </summary>
 /// <remarks>
 /// The goal of this strategy is to find a loop of doors that will eventually lead to the person's number. (The only question is if that loop is less than 50 doors deep or not).
-/// <list>
+/// <list type="number">
 ///     <item>We start by guessing the door equal to the number of the person.</item>
 ///     <item>We'll then take the number in the door, and guess that door.</item>
 ///     <item>We'll repeat that process until the person's number is found.</item>
