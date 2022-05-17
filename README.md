@@ -15,3 +15,7 @@ dotnet run
 
 1. Create a new IGuessingStrategy (Optionally, you can inherit from BaseGuessingStrategy)
 2. Add a new instance of your IGuessingStrategy to Program->STRATEGIES
+
+## Solution
+
+The solution is in the FollowTheNumbersStrategy class.
