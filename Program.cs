@@ -26,7 +26,8 @@ public static class Program {
         {
             (index, id) => new OneThroughFiftyGuessingStrategy(NUMBER_OF, index, id),
             (index, id) => new RandomGuessingStrategy(NUMBER_OF, index, id),
-            (index, id) => new GuessStartingAtStrategy(NUMBER_OF, index, id)
+            (index, id) => new GuessStartingAtStrategy(NUMBER_OF, index, id),
+            (index, id) => new FollowTheNumbersStrategy(NUMBER_OF, index, id)
         };
 
     /// <summary>
