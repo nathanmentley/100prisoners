@@ -2,6 +2,8 @@
 
 A simple app written in c# to test strategies to solve the [100 prisoners problem](https://en.wikipedia.org/wiki/100_prisoners_problem).
 
+The `main` branch  contains the shell for someone to try to implement their own solution. The `solution` branch has the solution implemented.
+
 ## Running
 
 Execute
