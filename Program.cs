@@ -34,27 +34,42 @@ public static class Program {
     /// Entrypoint Method
     /// </summary>
     public static void Main() {
-        IDictionary<string, IReadOnlyList<int>> results = new Dictionary<string, IReadOnlyList<int>>();
+        Dictionary<string, IReadOnlyList<int>> results = new Dictionary<string, IReadOnlyList<int>>();
 
         foreach(Func<int, int, IGuessingStrategy> stratFactory in STRATEGIES)
         {
             List<int> result = new List<int>();
 
             results[stratFactory(0, 0).Name] = 
-                Enumerable.Range(1, TOTAL_RUNS).Select(i => new Simulation(NUMBER_OF).Run(stratFactory)).ToList();
+                Enumerable
+                    .Range(1, TOTAL_RUNS)
+                    .Select(_ => new Simulation(NUMBER_OF).Run(stratFactory))
+                    .ToList();
         }
 
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine($"{"Strategy Name",-44} {"Avg % Find Number",-17} {"Avg % Of Survival",-17}");
-        Console.ResetColor();
-        foreach((string name, IReadOnlyList<int> result) in results)
-        {
-            PrintResults(name, result);
-        }
+        PrintResults(results);
     }
 
     /// <summary>
     /// Printes the results to the console. 
+    /// </summary>
+    /// <param name="results">
+    /// The results of all the strategy runs.
+    /// </param>
+    private static void PrintResults(IReadOnlyDictionary<string, IReadOnlyList<int>> results)
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"{"Strategy Name",-44} {"Avg % Find Number",-17} {"Avg % Of Survival",-17}");
+        Console.ResetColor();
+
+        foreach((string name, IReadOnlyList<int> result) in results)
+        {
+            PrintResult(name, result);
+        }
+    }
+
+    /// <summary>
+    /// Printes the results of a single strategy to the console. 
     /// </summary>
     /// <param name="name">
     /// The name of the <see cref="IGuessingStrategy"/>.
@@ -62,7 +77,7 @@ public static class Program {
     /// <param name="result">
     /// The total number of survivors from each run.
     /// </param>
-    private static void PrintResults(string name, IReadOnlyList<int> result)
+    private static void PrintResult(string name, IReadOnlyList<int> result)
     {
         double average = result.Average();
         double percentOfTimeAllSurvive = Convert.ToDouble(result.Count(x => x == NUMBER_OF)) / NUMBER_OF;
