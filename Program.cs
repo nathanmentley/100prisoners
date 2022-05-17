@@ -43,6 +43,9 @@ public static class Program {
                 Enumerable.Range(1, TOTAL_RUNS).Select(i => new Simulation(NUMBER_OF).Run(stratFactory)).ToList();
         }
 
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"{"Strategy Name",-44} {"Avg % Find Number",-17} {"Avg % Of Survival",-17}");
+        Console.ResetColor();
         foreach((string name, IReadOnlyList<int> result) in results)
         {
             PrintResults(name, result);
@@ -72,7 +75,7 @@ public static class Program {
             Console.ForegroundColor = ConsoleColor.Red;
         }
 
-        Console.WriteLine($"{name}: {average} - {percentOfTimeAllSurvive}");
+        Console.WriteLine($"{name,-44} {average,-17} {percentOfTimeAllSurvive,-16}");
         Console.ResetColor();
     }
 }
